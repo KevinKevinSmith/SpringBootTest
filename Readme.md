@@ -9,4 +9,4 @@ Using Spring Boot Tutorial from Amigoscode
     Only now I remember to check for extensions.
 4. End of API Layer
 5. End of Business Layer
-
+6. End of Properties File
