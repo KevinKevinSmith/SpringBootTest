@@ -26,7 +26,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/api/v1/student Copy",
+			"name": "localhost:8080/api/v1/student",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -49,6 +49,43 @@
 						"api",
 						"v1",
 						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/v1/student/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Bilal\",\r\n    \"email\":\"bilal.ahmed@gmail.com\",\r\n    \"dob\":\"1995-12-17\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/student/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"student",
+						"1"
+					],
+					"query": [
+						{
+							"key": "studentId",
+							"value": "3",
+							"disabled": true
+						}
 					]
 				}
 			},
