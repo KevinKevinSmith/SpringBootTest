@@ -2,6 +2,7 @@ package com.example.demo.student;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -23,7 +24,7 @@ public class StudentService {
 	}
 
 	public void addNewStudent(Student student) {
-		Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail()); //minimal validation
+		Optional<Student> studentOptional = StudentRepository.findStudentByEmail(student.getEmail()); //minimal validation
 
 		if (studentOptional.isPresent()) {
 			throw new IllegalStateException("email taken");
@@ -40,6 +41,7 @@ public class StudentService {
 		studentRepository.deleteById(studentId);
 	}
 
+	//My version
 	@Transactional
 	public void updateStudent(Student student, Long studentId) {
 		boolean exists = studentRepository.existsById(studentId);
@@ -61,5 +63,36 @@ public class StudentService {
 		}
 		studentRepository.save(old);
 	}
+	
+	/* //Amigos solution
+	@Transactional
+	public void updateStudent(Long studentId, String name, String email) {
+		Student student = studentRepository.findById(studentId)
+							.orElseThrow(() -> new IllegalStateException(
+								"student with id " + studentId + " does not exist."
+							));
+		if (name != null && 
+					name.length() > 0 &&
+					!Objects.equals(student.getName(), name)) {
+			student.setName(name);
+		}
+
+		if (email != null && 
+					email.length() > 0 &&
+					!Objects.equals(student.getEmail(), email)) {
+			Optional<Student> studentOptional = StudentRepository.findStudentByEmail(email); //In order to make sure the email isn't taken. Missed this error possibility.
+			//Annoyed that above doesn't work without editing the repository still (made method static). 
+			//We didn't make a new query but I assumed it would mean avoiding the repository class entirely.
+			if (studentOptional.isPresent()) { //if email is already there
+				throw new IllegalStateException("email taken");	
+			}	
+			student.setEmail(email);		
+		}
+
+		//Ugh, so he assumes lax PUT requirements, so then needs more complicated checks.
+		//At least only needs updates to be in parameters instead of adding a new object in the body, something I didn't think of. 
+	}
+	//Put request is broken with his method. Always has Null exception after checking if studentOptional.isPresent().
+	*/
     
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController //API Layer
@@ -38,8 +39,23 @@ public class StudentController {
         studentService.deleteStudent(studentId);
     }
 
+    //My version
     @PutMapping(path = "{studentId}")
     public void updateStudent(@RequestBody Student student, @PathVariable("studentId") Long studentId) {
         studentService.updateStudent(student, studentId);
     }
+    
+
+    /* //Amigoscode version
+    @PutMapping(path = "{studentId}")
+    public void updateStudent(
+            @PathVariable("studentId") Long studentId,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String email) {
+                studentService.updateStudent(studentId, name, email);
+            }
+    //Ugh, so he assumes lax PUT requirements, so then needs more complicated checks.
+    //At least only needs updates to be in parameters instead of adding a new object in the body, something I didn't think of. 
+    //Put request is broken with his method. Always has Null exception after checking if studentOptional.isPresent() in StudentService.
+    */    
 }

@@ -11,5 +11,8 @@ public interface StudentRepository extends JpaRepository<Student, Long>{
     
     //Below transforms into "SELECT * FROM student WHERE email = ?"
     @Query("SELECT s FROM Student s WHERE s.email = ?1")
-    Optional<Student> findStudentByEmail(String email);
+    static Optional<Student> findStudentByEmail(String email) {
+        // Auto-made static for update Service logic
+        return null;
+    }
 }
