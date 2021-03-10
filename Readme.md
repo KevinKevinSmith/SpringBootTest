@@ -11,3 +11,5 @@ Using Spring Boot Tutorial from Amigoscode
 5. End of Business Layer
 6. End of Properties File
 7. End of Creating and Connecting to Database
+8. End of JPA and @Entity
+
