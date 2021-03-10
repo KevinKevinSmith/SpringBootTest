@@ -26,14 +26,16 @@ Requires:
 * PostgresSQL database named student on localhost:5432
 * application.properties file in java source resource folder
 * example:
-> spring.datasource.url=jdbc:postgresql://localhost:5432/student
-> spring.datasource.username=your-postgres-app-username
-> spring.datasource.password=your-postgress-app-password
-> spring.jpa.hibernate.ddl-auto=create-drop
-> spring.jpa.show-sql=true
-> spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-> spring.jpa.properties.hibernate.format_sql=true
-> server.error.include-message=always
+```
+spring.datasource.url=jdbc:postgresql://localhost:5432/student 
+spring.datasource.username=your-postgres-app-username 
+spring.datasource.password=your-postgress-app-password 
+spring.jpa.hibernate.ddl-auto=create-drop 
+spring.jpa.show-sql=true 
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect 
+spring.jpa.properties.hibernate.format_sql=true 
+server.error.include-message=always 
+```
 
 ## Postman Collection
 Created in order to do POST/PUT/DELETE requests.
