@@ -19,6 +19,7 @@ Using Spring Boot Tutorial from Amigoscode
 12. End of Post Mapping
 13. End of Writing Business Logic and Testing Post Request
 14. Deleting Students
+15. End of Exercise
 
 ## To run in current state
 Requires:
@@ -26,8 +27,8 @@ Requires:
 * application.properties file in java source resource folder
 * example:
 > spring.datasource.url=jdbc:postgresql://localhost:5432/student
-> spring.datasource.username=<your postgres app username>
-> spring.datasource.password=<your postgress app password>
+> spring.datasource.username=your-postgres-app-username
+> spring.datasource.password=your-postgress-app-password
 > spring.jpa.hibernate.ddl-auto=create-drop
 > spring.jpa.show-sql=true
 > spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
